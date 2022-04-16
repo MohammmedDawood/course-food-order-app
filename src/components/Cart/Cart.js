@@ -20,6 +20,18 @@ function Cart(props) {
     cartCtx.addItem({ ...item, amount: 1 });
   };
 
+  const submitOrderHandler = (userData) => {
+    // send the request uder data and cart data
+    console.log(userData);
+    fetch(
+      "https://react-http-c5e4d-default-rtdb.europe-west1.firebasedatabase.app/orders.json",
+      {
+        method: "POST",
+        body: JSON.stringify({ user: userData, orderItems: cartCtx.items }),
+      }
+    );
+  };
+
   const orderHandler = () => {
     setIsCheckout(true);
   };
@@ -58,7 +70,9 @@ function Cart(props) {
         <span>Total Amount</span>
         <span>{totalAmount}</span>
       </div>
-      {isCheckout && <Checkout onCancel={props.onCloseCart} />}
+      {isCheckout && (
+        <Checkout onConfirm={submitOrderHandler} onCancel={props.onCloseCart} />
+      )}
       {!isCheckout && modalActions}
     </Modal>
   );

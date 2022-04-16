@@ -3,7 +3,7 @@ import classes from "./Checkout.module.css";
 
 //Helper Validation Functions
 const isEmpty = (value) => value.trim() === "";
-const isFiveChars = (value) => value.trim() == 5;
+const isFiveChars = (value) => value.trim().length == 5;
 
 const Checkout = (props) => {
   const [formInputValidty, setFormInputValidty] = useState({
@@ -46,6 +46,13 @@ const Checkout = (props) => {
     if (!formIsValid) {
       return;
     }
+    // Submit order Data to Server
+    props.onConfirm({
+      name: enteredName,
+      street: enteredStreet,
+      city: enteredCity,
+      postalCode: enteredPostalCode,
+    });
   };
 
   // Helper Classes
