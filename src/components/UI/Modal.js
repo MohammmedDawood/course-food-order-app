@@ -12,7 +12,7 @@ function ModalOverlay(props) {
     </div>
   );
 }
-const portalElement = document.getElementById("root");
+const portalElement = document.getElementById("overlays");
 function Modal(props) {
   return (
     <>
