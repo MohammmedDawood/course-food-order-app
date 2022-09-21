@@ -87,7 +87,7 @@ function Cart(props) {
     <>
       <p>Successfully sent the Order!</p>
       <div className={classes.actions}>
-        <button className={classes["button--alt"]} onClick={props.onCloseCart}>
+        <button className={classes.button} onClick={props.onCloseCart}>
           Close
         </button>
       </div>
